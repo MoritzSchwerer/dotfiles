@@ -6,25 +6,25 @@ font:
   # Normal (roman) font face
   normal:
     family: "JetBrainsMono Nerd Font"
-    #style: Regular
+    style: Regular
 
   # Bold font face
   bold:
     family: "JetBrainsMono Nerd Font"
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
     family: "JetBrainsMono Nerd Font"
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
   bold_italic:
     family: "JetBrainsMono Nerd Font"
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
-  size: 16
+  size: 17
 
   # Offset
   #offset:
