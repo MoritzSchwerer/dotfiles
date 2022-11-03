@@ -1,0 +1,9 @@
+alias r='. ranger'
+
+alias python='python3'
+
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+
+alias n='nvim'
+alias e='nvim'

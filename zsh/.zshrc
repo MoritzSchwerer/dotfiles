@@ -1,0 +1,34 @@
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+ALIASES=~/.zsh_aliases
+EXPORTS=~/.zsh_exports
+
+if [ -f "$ALIASES" ]; then
+    source $ALIASES
+fi
+
+if [ -f "$EXPORTS" ]; then
+    source $EXPORTS
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/moritz/.miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/moritz/.miniconda/etc/profile.d/conda.sh" ]; then
+        . "/home/moritz/.miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/moritz/.miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
