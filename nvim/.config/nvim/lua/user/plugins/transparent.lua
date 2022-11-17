@@ -3,6 +3,6 @@ require("transparent").setup{
     extra_groups = {
         "CursorLine",
         "StatusLine",
-        "Title"
+        "TabLineFill",
     }
 }
