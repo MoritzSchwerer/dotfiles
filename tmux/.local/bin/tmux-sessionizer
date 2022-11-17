@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dev/python ~/dev/haskell ~/dev/config ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/dev/python ~/dev/haskell ~/dev/config ~/ -mindepth 0 -maxdepth 1 -type d -name "[!.]*" | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -20,6 +20,7 @@ fi
 
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
+    tmux new-window -n shell -t $selected_name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t $selected_name:0
