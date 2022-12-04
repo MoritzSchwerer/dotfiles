@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dev/python ~/dev/haskell ~/dev/config ~/ -mindepth 0 -maxdepth 1 -type d -name "[!.]*" | fzf)
+    selected=$(find ~/dev/ ~/ -mindepth 0 -maxdepth 1 -type d -name "[!.]*" | fzf)
 fi
 
 if [[ -z $selected ]]; then
