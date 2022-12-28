@@ -29,6 +29,29 @@ config.pyright.setup {
     on_attach = on_attach
 
 }
+
+config.rust_analyzer.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        ["rust_analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true,
+            },
+        }
+    }
+}
 config.hls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
