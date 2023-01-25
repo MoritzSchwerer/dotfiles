@@ -76,16 +76,27 @@ return packer.startup(function(use)
     use {"tzachar/cmp-tabnine", run= "./install.sh", after="nvim-cmp" }
     use "onsails/lspkind.nvim"
 
-    use "theprimeagen/vim-be-good"
-
     use {"L3MON4D3/LuaSnip"}
     use {"saadparwaiz1/cmp_luasnip", after="nvim-cmp"}
 
     use 'rafamadriz/friendly-snippets'
 
-    use "xiyaowong/nvim-transparent"
-
     use "ggandor/leap.nvim"
+
+    -- markdown stuff
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    }
+    use "junegunn/goyo.vim"
+
+    use {
+      "folke/twilight.nvim",
+      config = function()
+        require("twilight").setup {}
+      end
+    }   
+    use "junegunn/limelight.vim"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

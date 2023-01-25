@@ -25,12 +25,12 @@ cmp.setup {
         })
     },
     sources = cmp.config.sources({
-        { name = "nvim_lsp_signature_help"},
-        { name = "cmp_tabnine" },
+        { name = "luasnip" },
         { name = "nvim_lsp" },
+        { name = "cmp_tabnine" },
+        { name = "nvim_lsp_signature_help"},
         { name = "buffer", keyword_length=5 },
         { name = "path" },
-        { name = "luasnip" },
     }),
     formatting = {
         format = lspkind.cmp_format {
@@ -46,7 +46,9 @@ cmp.setup {
     }
 }
 
-vim.keymap.set("i", "<C-f>", function()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "../snippets" } })
+
+vim.keymap.set("i", "<C-Space>", function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
     end

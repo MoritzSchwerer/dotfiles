@@ -8,3 +8,6 @@ alias tn='tmux new -s'
 
 alias n='nvim'
 alias e='nvim'
+
+
+alias hn='hostname'
