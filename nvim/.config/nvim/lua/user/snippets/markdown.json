@@ -1,7 +1,0 @@
-{
-    "Latex block": {
-    "prefix": "latexb",
-	"body": "\\begin{align}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{align}",
-    "description": "create Latex block"
-  },
-}
