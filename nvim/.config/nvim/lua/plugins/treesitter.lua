@@ -19,7 +19,13 @@ return {
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
         end,
-    }
+    },
+    {
+        'p00f/nvim-ts-rainbow',
+        event = "BufReadPost",
+        dependencies = { 'nvim-treesitter' },
+    },
+
 }
 
 

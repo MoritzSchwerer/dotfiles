@@ -1,10 +1,36 @@
 return {
-    'numToStr/Comment.nvim',
-    opts = {
-        toggler = {
-            line = 'co',
-            block = 'cb',
+    {
+        'numToStr/Comment.nvim',
+        keys = {
+            { "co" },
+        },
+        opts = {
+            toggler = {
+                line = 'co',
+            },
+            opleader = {
+                line = 'co',
+            },
+        },
+        config = true,
+    },
+    {
+        'mbbill/undotree',
+        keys = {
+            { "<leader>u", "<cmd>UndotreeToggle<cr>" },
         },
     },
-    config = true,
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        event = "VeryLazy",
+        opts = {
+            char = '┊',
+            show_trailing_blankline_indent = false,
+        }
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true,
+    }
 }
