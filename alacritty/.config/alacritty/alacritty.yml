@@ -45,3 +45,11 @@ cursor:
 
 ## Live config reload
 live_config_reload: true
+# ~/.alacritty.yml
+
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"

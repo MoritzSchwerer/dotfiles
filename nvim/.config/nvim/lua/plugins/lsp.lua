@@ -12,7 +12,7 @@ local config_cmp = function(lsp)
             else
                 fallback()
             end
-        end, {'i', 's'}),
+            end, {'i', 's'}),
     })
     lsp.setup_nvim_cmp({
         mapping = cmp_mappings,
@@ -20,6 +20,7 @@ local config_cmp = function(lsp)
             completeopt = 'menu,menuone, noinsert, noselect',
         },
         sources = {
+            { name = 'otter' },
             { name = 'copilot' },
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
@@ -90,8 +91,8 @@ return {
             lsp.setup_servers({'pyright'})
             config_cmp(lsp)
             lsp.set_preferences({
-                sign_icons = {},
-                suggest_lsp_servers = false,
+    sign_icons = {},
+suggest_lsp_servers = false,
             })
             lsp.on_attach(function(client, bufnr)
                 local opts = {buffer = bufnr, remap = false}
