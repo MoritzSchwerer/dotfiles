@@ -23,7 +23,18 @@ return {
     },
     {
         'jpalardy/vim-slime',
-        event = 'VeryLazy'
+        cmd = { "SlimeConfig", "SlimeSend", "SlimeSendCurrentLine" },
+        keys = {
+            { "<s-cr>", "<cmd>SlimeSendCurrentLine<cr>" },
+            { "<s-cr>", "<cmd>SlimeSend<cr>" },
+        },
+        config = function()
+            vim.g.slime_target = "tmux"
+            vim.g.slime_default_config = {
+                socket_name = "default",
+                target_pane = "{last}"
+            }
+        end
     },
     {
         'ekickx/clipboard-image.nvim',

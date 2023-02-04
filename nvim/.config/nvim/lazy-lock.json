@@ -34,5 +34,6 @@
   "trouble.nvim": { "branch": "main", "commit": "490f7fe6d227f4f7a64f00be8c7dcd7a508ed271" },
   "undotree": { "branch": "master", "commit": "1a23ea84bd02c34f50d8e10a8b4bfc89597ffe4e" },
   "vim-illuminate": { "branch": "master", "commit": "d6ca7f77eeaf61b3e6ce9f0e5a978d606df44298" },
-  "vim-slime": { "branch": "main", "commit": "5308556987857eb0fc5f1a774496b29d8dd70f34" }
+  "vim-slime": { "branch": "main", "commit": "5308556987857eb0fc5f1a774496b29d8dd70f34" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" }
 }

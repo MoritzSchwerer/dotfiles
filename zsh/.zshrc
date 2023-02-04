@@ -54,3 +54,5 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+eval "$(zoxide init zsh --cmd j)"

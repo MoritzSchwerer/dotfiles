@@ -1,9 +1,7 @@
 return {
     {
         'numToStr/Comment.nvim',
-        keys = {
-            { "co" },
-        },
+        event = "VeryLazy",
         opts = {
             toggler = {
                 line = 'co',
