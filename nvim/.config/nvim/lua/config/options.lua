@@ -29,12 +29,12 @@ vim.opt.signcolumn = "yes"                      -- always show the sign column, 
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
-vim.o.ls = 0
-vim.o.ch = 0
 
--- limelight
-vim.g.limelight_conceal_ctermfg = 240
-vim.g.limelight_conceal_ctermbg = 0
+-- disable status line
+vim.o.ls = 0
+
+-- disable command line
+-- vim.o.ch = 0
 
 
 

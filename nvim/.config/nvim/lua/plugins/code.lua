@@ -26,15 +26,6 @@ return {
         config = true,
     },
     {
-        "windwp/nvim-spectre",
-        keys = {
-            { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-        },
-    },
-    {
-        'RRethy/vim-illuminate'
-    },
-    {
         "folke/trouble.nvim",
         cmd = { "TroubleToggle", "Trouble" },
         opts = { use_diagnostic_signs = true },
@@ -49,7 +40,6 @@ return {
     {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
-        event = "BufReadPost",
         config = true,
         keys = {
             { "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },

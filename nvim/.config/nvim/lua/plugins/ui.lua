@@ -14,15 +14,15 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         event = "VeryLazy",
-        config = true,
-        -- opts = {
-        --     signs = {
-        --         add = { text = '+' },
-        --         change = { text = '~' },
-        --         delete = { text = '_' },
-        --         topdelete = { text = '‾' },
-        --         changedelete = { text = '~' },
-        --     },
-        -- }
+        opts = {
+            trouble = false,
+            -- signs = {
+            --     add = { text = '+' },
+            --     change = { text = '~' },
+            --     delete = { text = '_' },
+            --     topdelete = { text = '‾' },
+            --     changedelete = { text = '~' },
+            -- },
+        }
     },
 }

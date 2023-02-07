@@ -20,7 +20,6 @@ local config_cmp = function(lsp)
             completeopt = 'menu,menuone, noinsert, noselect',
         },
         sources = {
-            { name = 'otter' },
             { name = 'copilot' },
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
@@ -61,7 +60,6 @@ return {
     -- },
     {
         'VonHeikemen/lsp-zero.nvim',
-        lazy = true,
         event = "BufReadPre",
         branch = 'v1.x',
         dependencies = {
@@ -86,17 +84,18 @@ return {
             local lsp = require('lsp-zero')
             lsp.preset("recommended")
             lsp.ensure_installed({
-                'sumneko_lua'
+                'sumneko_lua',
+                -- 'bash-language-server'
             })
             lsp.setup_servers({'pyright'})
             config_cmp(lsp)
             lsp.set_preferences({
-    sign_icons = {},
-suggest_lsp_servers = false,
+                sign_icons = {},
+                suggest_lsp_servers = false,
             })
+            lsp.nvim_workspace()
             lsp.on_attach(function(client, bufnr)
                 local opts = {buffer = bufnr, remap = false}
-
                 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
                 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
                 vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)

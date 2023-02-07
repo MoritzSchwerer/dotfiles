@@ -4,15 +4,18 @@ return {
         cmd = "Telescope",
         version = false,
         keys = {
-            { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
             { "<leader>af", "<cmd>Telescope find_files hidden=True<cr>", desc = "Find Files" },
             { "<leader>ax", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
             { "<leader>ag", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-            { "<leader>ab", "<cmd>Telescope buffers<cr>", "Find Buffer" },
+            { "<leader>ab", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+            { "<leader>ac", "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
         },
         dependencies = {
-            "nvim-lua/plenary.nvim"
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-file-browser.nvim"
         },
-        config = true
-    }
+        config = function ()
+            require('telescope').load_extension('file_browser')
+        end
+    },
 }
