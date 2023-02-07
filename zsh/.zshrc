@@ -11,6 +11,7 @@ plugins=(
 
 ALIASES=~/.zsh_aliases
 EXPORTS=~/.zsh_exports
+UTILS=~/.zsh_utils
 
 if [ -f "$ALIASES" ]; then
     source $ALIASES
@@ -18,6 +19,10 @@ fi
 
 if [ -f "$EXPORTS" ]; then
     source $EXPORTS
+fi
+
+if [ -f "$UTILS" ]; then
+    source $UTILS
 fi
 
 source $ZSH/oh-my-zsh.sh
