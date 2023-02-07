@@ -16,6 +16,8 @@ alias gs="git status"
 alias gl="git log"
 alias gb="git branch"
 alias gch="git checkout -b"
+alias gac="git add . && git commit -m"
+alias gacp="git add . && git commit -m && git push"
 
 # tmux
 alias t="tmux"
