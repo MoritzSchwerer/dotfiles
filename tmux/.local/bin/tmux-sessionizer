@@ -3,23 +3,31 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dev/ ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*" | fzf)
+  RESULT=$((tmux list-sessions -F "#{session_name}: #{session_windows} window(s)\
+#{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}\
+#{?session_attached, (attached),}"; find ~/dev/ ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf)
+    # selected=$(( tmux list-sessions "#{session_name}" ;find ~/dev/ ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z $RESULT ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
-
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
+if [[ $RESULT == *":"* ]]; then
+  # RESULT comes from list-sessions
+  SESSION=$(echo $RESULT | awk '{print $1}')
+  SESSION=${SESSION//:/}
+else
+  # RESULT is a path
+  SESSION=$(basename $RESULT | tr . _)
+  if ! tmux has-session -t=$SESSION 2> /dev/null; then
+    tmux new-session -d -s $SESSION -c $RESULT
+  fi
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+# Attach to session
+if [ -z "$TMUX" ]; then
+  tmux attach -t $SESSION
+else
+  tmux switch-client -t $SESSION
 fi
-
-tmux switch-client -t $selected_name:1
