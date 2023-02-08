@@ -44,7 +44,7 @@ return {
                 sources = {
                     { name = 'copilot' },
                     { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
+                    { name = 'luasnip', keyword_length = 3 },
                     { name = 'buffer', keyword_length = 3 },
                     { name = 'path' },
                 },
@@ -52,6 +52,9 @@ return {
         end,
     },
     {
-
-    }
+        'hrsh7th/cmp-copilot',
+        dependencies = {
+            'github/copilot.vim'
+        },
+    },
 }
