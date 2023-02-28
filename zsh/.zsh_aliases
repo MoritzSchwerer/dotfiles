@@ -6,7 +6,13 @@ alias n='nvim'
 alias e='nvim'
 
 
+
+# general
 alias hn='hostname'
+
+
+# conda
+alias ca='conda activate'
 
 # git 
 alias ga="git add ."
