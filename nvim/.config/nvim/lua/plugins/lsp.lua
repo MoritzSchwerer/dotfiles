@@ -1,6 +1,6 @@
 local on_attach = function(_, bufnr)
     local opts = {buffer = bufnr, remap = false}
-    vim.keymap.set("n", "fa", function() vim.lsp.buf.format() end, opts)
+    vim.keymap.set("n", "<leader>fa", function() vim.lsp.buf.format() end, opts)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -32,8 +32,10 @@ return {
         config = function()
             local servers = {
                 'pyright',
-                'sumneko_lua',
+                -- 'pyre',
+                'lua_ls',
                 'bashls',
+                'tsserver'
             }
             require("mason").setup()
             require("mason-lspconfig").setup {
@@ -45,9 +47,12 @@ return {
                     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                 })
             end
+            require('lspconfig').pyre.setup {}
 
             -- make lua lsp aware of vim global
-            require('lspconfig').sumneko_lua.setup {
+            require('lspconfig').lua_ls.setup {
+                on_attach = on_attach,
+                capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -56,9 +61,22 @@ return {
                     },
                 },
             }
+            -- make lua lsp aware of vim global
+            require('lspconfig').pyright.setup {
+                on_attach = on_attach,
+                capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                settings = {
+                    python = {
+                        analysis = {
+                            reportWildcardImportFromLibrary = 'none',
+                        },
+                    },
+                },
+            }
 	        require("mason-null-ls").setup {
                 ensure_installed = {
                     "autoflake",
+                    "flake8",
                     "blue",
                 }
             }
@@ -67,6 +85,8 @@ return {
                 sources = {
                     null_ls.builtins.formatting.blue,
                     null_ls.builtins.diagnostics.flake8,
+                    -- null_ls.builtins.formatting.autoflake,
+                    -- null_ls.builtins.diagnostics.pyre,
                 },
             }
         end,

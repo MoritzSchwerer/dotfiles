@@ -12,6 +12,8 @@ return {
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
             {'hrsh7th/cmp-copilot'},
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
+            
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},
@@ -44,6 +46,7 @@ return {
                 sources = {
                     { name = 'copilot' },
                     { name = 'nvim_lsp' },
+                    { name = 'nvim_lsp_signature_help' },
                     { name = 'luasnip', keyword_length = 3 },
                     { name = 'buffer', keyword_length = 3 },
                     { name = 'path' },
