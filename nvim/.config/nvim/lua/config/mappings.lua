@@ -21,6 +21,4 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Turn of highlights
-keymap("n", "<leader>hl", ":nohlsearch<cr>", opts)
-
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
+keymap("n", "<leader>hl", "<cmd>nohlsearch<cr>", opts)

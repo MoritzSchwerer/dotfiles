@@ -4,6 +4,10 @@ return {
         event = "InsertEnter",
         dependencies = {
             {'neovim/nvim-lspconfig'},
+            { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+            { "folke/neodev.nvim", config = true },
+            { "j-hui/fidget.nvim", config = true },
+            { "smjonas/inc-rename.nvim", config = true },
 
             -- Autocompletion
             {'hrsh7th/cmp-buffer'},

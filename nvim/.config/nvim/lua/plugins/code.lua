@@ -37,12 +37,12 @@ return {
             { "<leader>wt", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
         },
     },
-    {
-        "folke/todo-comments.nvim",
-        cmd = { "TodoTrouble", "TodoTelescope" },
-        config = true,
-        keys = {
-            { "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-        },
-    },
+    -- {
+    --     "folke/todo-comments.nvim",
+    --     cmd = { "TodoTrouble", "TodoTelescope" },
+    --     config = true,
+    --     keys = {
+    --         { "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    --     },
+    -- },
 }
