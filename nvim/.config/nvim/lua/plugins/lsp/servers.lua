@@ -14,11 +14,14 @@ local servers = {
         settings = {
             python = {
                 analysis = {
-                    reportWildcardImportFromLibrary = 'none',
+                    typeCheckingMode = "strict",
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true
                 },
             },
         },
     },
+    ruff_lsp = {},
 }
 
 local function lsp_attach(on_attach)
@@ -42,7 +45,9 @@ function M.setup()
         require("plugins.lsp.keymaps").on_attach(client, buffer)
     end)
 
-    require("mason-lspconfig").setup { ensure_installed = vim.tbl_keys(servers) }
+    require("mason-lspconfig").setup {
+        ensure_installed = vim.tbl_keys(servers),
+    }
     require("mason-lspconfig").setup_handlers {
         function(server)
             local opts = servers[server] or {}

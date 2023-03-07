@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+cp /home/moritz/templates/python/pyproject.toml .

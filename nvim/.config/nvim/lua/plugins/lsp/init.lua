@@ -6,10 +6,10 @@ return {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/nvim-cmp',
 
-            { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
-            { "folke/neodev.nvim",       config = true },
-            { "j-hui/fidget.nvim",       config = true },
+            -- { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
+            -- { "folke/neodev.nvim",       config = true },
             { "smjonas/inc-rename.nvim", config = true },
+            "j-hui/fidget.nvim",
 
             -- Language servers
             "williamboman/mason.nvim",
@@ -31,7 +31,11 @@ return {
             "blue",
         },
         config = function(plugin)
-            require("mason").setup()
+            require("mason").setup(
+                {
+                    PATH = "append"
+                }
+            )
             local mr = require "mason-registry"
             for _, tool in ipairs(plugin.ensure_installed) do
                 local p = mr.get_package(tool)
@@ -54,4 +58,8 @@ return {
             }
         end,
     },
+    {
+        "j-hui/fidget.nvim",
+        config = true,
+    }
 }

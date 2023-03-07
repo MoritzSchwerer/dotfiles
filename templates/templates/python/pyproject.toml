@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 80
+extend-select = ["C4", "SIM", "TCH", "NPY", "PTH", "ANN2"]
+extend-ignore = ["F403", "F405"]
+
+
+[tool.ruff.mccabe]
+max-complexity = 6
+
+[tool.pyright]
+typeCheckingMode = "basic"
+stubPath = "stubs"
+reportWildcardImportFromLibrary = false
