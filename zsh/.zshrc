@@ -43,7 +43,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
+#[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
 
 export PATH="/home/moritz/.cargo/bin:$PATH"
 
@@ -61,3 +61,5 @@ zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
 eval "$(zoxide init zsh --cmd j)"
+
+[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env

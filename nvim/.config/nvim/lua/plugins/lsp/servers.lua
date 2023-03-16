@@ -1,6 +1,20 @@
 local M = {}
 
 local servers = {
+    hls = {
+        settings = {
+            haskell = {
+                cabalFormattingProvider = "cabalfmt",
+                formattingProvider = "stylish-haskell",
+                maxCompletions = 40,
+                plugin = {
+                    hlintOn = {
+                        globalOn = true
+                    },
+                },
+            }
+        }
+    },
     lua_ls = {
         settings = {
             Lua = {

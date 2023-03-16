@@ -4,6 +4,9 @@ return {
         version = false,
         build = ":TSUpdate",
         event = "BufReadPost",
+        dependencies = {
+            "tree-sitter/tree-sitter-html"
+        },
         opts = {
             highlight = { enable = true },
             indent = { enable = true },
@@ -13,6 +16,7 @@ return {
                 "markdown",
                 "bash",
                 "lua",
+                "haskell"
             },
             rainbow = { enable = true },
         },
@@ -33,5 +37,3 @@ return {
 
 
 }
-
-

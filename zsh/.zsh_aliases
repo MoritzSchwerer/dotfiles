@@ -5,6 +5,8 @@ alias python='python3'
 alias n='nvim'
 alias e='nvim'
 
+# google calender
+alias gcal='gcalcli'
 
 
 # general

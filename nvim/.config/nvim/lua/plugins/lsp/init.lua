@@ -61,5 +61,11 @@ return {
     {
         "j-hui/fidget.nvim",
         config = true,
+    },
+    {
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_filetypes = { ["haskell"] = false }
+        end,
     }
 }

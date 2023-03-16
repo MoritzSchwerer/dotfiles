@@ -42,11 +42,11 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
-                        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                        ['<C-Space>'] = cmp.mapping.complete(),
-                        ['<C-f>'] = cmp.mapping(function(fallback)
+                    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-f>'] = cmp.mapping(function(fallback)
                         if require('luasnip').jumpable(1) then
                             require('luasnip').jump(1)
                         else
@@ -55,7 +55,7 @@ return {
                     end),
                 }),
                 sources = {
-                    { name = 'copilot' },
+                    -- { name = 'copilot' },
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lsp_signature_help' },
                     { name = 'luasnip',                keyword_length = 3 },
@@ -91,10 +91,15 @@ return {
             }
         end,
     },
-    {
-        'hrsh7th/cmp-copilot',
-        dependencies = {
-            'github/copilot.vim'
-        },
-    },
+    -- {
+    --     'hrsh7th/cmp-copilot',
+    --     dependencies = {
+    --         {
+    --             'github/copilot.vim',
+    --             config = function()
+    --                 vim.g.copilot_filetypes = { ["haskell"] = false }
+    --             end,
+    --         }
+    --     },
+    -- },
 }
