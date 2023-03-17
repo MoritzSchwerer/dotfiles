@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 if [[ -z $STOW_FOLDERS ]]; then
-    export STOW_FOLDERS="bin,i3,wallpapers,nvim,tmux,zsh,alacritty"
+    export STOW_FOLDERS="bin,i3,wallpapers,nvim,tmux,zsh,alacritty,templates"
 fi
 
 if [[ -z $DOTFILES ]]; then
