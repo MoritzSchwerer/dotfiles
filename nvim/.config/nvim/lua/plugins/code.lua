@@ -42,7 +42,7 @@ return {
         cmd = { "TodoTrouble", "TodoTelescope" },
         config = true,
         keys = {
-            { "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+            { "<leader>at", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
         },
     },
 }

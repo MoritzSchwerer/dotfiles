@@ -1,12 +1,13 @@
 local M = {}
 
 local servers = {
+    julials = {},
     hls = {
         settings = {
             haskell = {
                 cabalFormattingProvider = "cabalfmt",
                 formattingProvider = "stylish-haskell",
-                maxCompletions = 40,
+                maxCompletions = 10,
                 plugin = {
                     hlintOn = {
                         globalOn = true

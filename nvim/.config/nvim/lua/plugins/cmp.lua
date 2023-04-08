@@ -55,7 +55,7 @@ return {
                     end),
                 }),
                 sources = {
-                    -- { name = 'copilot' },
+                    { name = 'copilot' },
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lsp_signature_help' },
                     { name = 'luasnip',                keyword_length = 3 },
@@ -91,15 +91,12 @@ return {
             }
         end,
     },
-    -- {
-    --     'hrsh7th/cmp-copilot',
-    --     dependencies = {
-    --         {
-    --             'github/copilot.vim',
-    --             config = function()
-    --                 vim.g.copilot_filetypes = { ["haskell"] = false }
-    --             end,
-    --         }
-    --     },
-    -- },
+    {
+        'hrsh7th/cmp-copilot',
+        dependencies = {
+            {
+                'github/copilot.vim',
+            }
+        },
+    },
 }

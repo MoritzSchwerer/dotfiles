@@ -63,3 +63,11 @@ fpath+=~/.zfunc
 eval "$(zoxide init zsh --cmd j)"
 
 [ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/moritz/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
