@@ -1,7 +1,8 @@
 return {
     {
         'hrsh7th/nvim-cmp',
-        event = "InsertEnter",
+        -- event = "InsertEnter",
+        ft = { 'python', 'bash' },
         dependencies = {
             { 'neovim/nvim-lspconfig' },
 
@@ -99,4 +100,12 @@ return {
             }
         },
     },
+    {
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_filetypes = {
+                markdown = false,
+            }
+        end,
+    }
 }

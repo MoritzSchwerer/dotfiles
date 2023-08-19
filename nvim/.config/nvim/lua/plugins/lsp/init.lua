@@ -5,7 +5,6 @@ return {
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/nvim-cmp',
-
             -- { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
             -- { "folke/neodev.nvim",       config = true },
             { "smjonas/inc-rename.nvim", config = true },
@@ -54,6 +53,7 @@ return {
             nls.setup {
                 sources = {
                     nls.builtins.formatting.blue,
+                    nls.builtins.diagnostics.mypy,
                 },
             }
         end,
@@ -62,10 +62,4 @@ return {
         "j-hui/fidget.nvim",
         config = true,
     },
-    -- {
-    --     'github/copilot.vim',
-    --     config = function()
-    --         vim.g.copilot_filetypes = { ["haskell"] = false }
-    --     end,
-    -- }
 }
