@@ -2,16 +2,18 @@ alias r='. ranger'
 
 alias python='python3'
 
+# nvim
 alias n='nvim'
 alias e='nvim'
 
-# google calender
-alias gcal='gcalcli'
+# todo
+alias todo='nvim +"Telekasten goto_today"'
 
+# arduino
+alias ac='arduino-cli'
 
 # general
 alias hn='hostname'
-
 
 # conda
 alias ca='conda activate'

@@ -47,9 +47,9 @@ cursor:
 live_config_reload: true
 # ~/.alacritty.yml
 
-# shell:
-#   program: /bin/zsh
-#   args:
-#     - -l
-#     - -c
-#     - "tmux new-session -s base"
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "startTmux"

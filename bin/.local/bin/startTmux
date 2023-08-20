@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+
+
+function session_exists() {
+    sessions=$(tmux list-sessions -F "#{session_name}")
+    echo $sessions | tr ' ' '\n' | grep -Fqx "$1"
+}
+
+if session_exists 'base'; then
+    tmux attach-session -t base
+else
+    tmux new-session -s base
+fi

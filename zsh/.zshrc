@@ -45,11 +45,7 @@ unset __conda_setup
 
 #[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
 
-export PATH="/home/moritz/.cargo/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export PATH="/home/moritz/.cargo/bin:$PATH"
 
 # binding for history-substring-search
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -61,13 +57,3 @@ zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
 eval "$(zoxide init zsh --cmd j)"
-
-[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/moritz/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<

@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    RESULT=$1
 else
-  RESULT=$((tmux list-sessions -F "#{session_name}: #{session_windows} window(s)\
-#{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}\
-#{?session_attached, (attached),}"; find ~/dev/* ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf)
-    # selected=$(( tmux list-sessions "#{session_name}" ;find ~/dev/ ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf)
+    RESULT=$((tmux list-sessions -F "#{session_name}: #{session_windows} window(s)\
+        #{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}\
+        #{?session_attached, (attached),}"; find ~/dev/* ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf --reverse)
 fi
 
 if [[ -z $RESULT ]]; then

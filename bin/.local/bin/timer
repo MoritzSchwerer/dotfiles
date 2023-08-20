@@ -1,0 +1,18 @@
+#! /usr/bin/bash
+
+# This script is used to tell you to take a break from
+# work after a $1 number of minutes.
+
+
+# Check if the user has entered a number
+# if not then default to 60 minutes
+if [[ $1 =~ ^[0-9]+$ ]]; then
+    minutes=$1
+else
+    minutes=60
+fi
+
+message="Take a break from work for at least 15 minutes."
+echo "notify-send -u critical -t 60000 'Timer' '$message'" | at now + $minutes minutes > /dev/null 2>&1
+
+echo "Successfully set timer for $minutes minutes."

@@ -1,1 +1,4 @@
 export EDITOR='nvim'
+export OPENAI_API_KEY='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'
+
+export ZETTELKASTEN_ROOT=$HOME/.telekasten/
