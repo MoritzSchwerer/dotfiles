@@ -43,10 +43,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-#[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
-
-# export PATH="/home/moritz/.cargo/bin:$PATH"
-
 # binding for history-substring-search
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
@@ -57,3 +53,5 @@ zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
 eval "$(zoxide init zsh --cmd j)"
+
+eval "$(atuin init zsh --disable-up-arrow)"

@@ -7,4 +7,5 @@ xrandr --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1
 # xrandr --output DVI-I-2-2 --off
 
 # set wallpaper
-feh --bg-fill ~/.config/wallpapers/docked/default.png
+feh --bg-fill ~/.config/wallpapers/docked/DeepWorkBackground.png
+# feh --bg-fill ~/.config/wallpapers/docked/default.png

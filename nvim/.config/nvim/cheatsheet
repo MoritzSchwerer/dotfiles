@@ -11,15 +11,15 @@ f           Find Files
 x           Git Files
 g           Live grep
 b           List Buffers
-c           File Browser
 
 Trouble:
 <leader>dt  Document Diagnostics
-<leader>wt  Workspace Diagnostics
+<leader>dT  Workspace Diagnostics
 
 
 Todo Comments:
 <leader>st  TodoTelescope
+
 
 
 

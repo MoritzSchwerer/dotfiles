@@ -1,43 +1,29 @@
 local M = {}
 
 local servers = {
-    -- hls = {
-    --     settings = {
-    --         haskell = {
-    --             cabalFormattingProvider = "cabalfmt",
-    --             formattingProvider = "stylish-haskell",
-    --             maxCompletions = 10,
-    --             plugin = {
-    --                 hlintOn = {
-    --                     globalOn = true
-    --                 },
-    --             },
-    --         }
-    --     }
-    -- },
-    -- lua_ls = {
-    --     settings = {
-    --         Lua = {
-    --             diagnostics = {
-    --                 globals = { 'vim' },
-    --             },
-    --         },
-    --     },
-    -- },
-    pyright = {
+    hls = {
         settings = {
-            python = {
-                analysis = {
-                    typeCheckingMode = "off",
-                    diagnosticMode = "off",
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true
+            haskell = {
+                cabalFormattingProvider = "cabalfmt",
+                formattingProvider = "stylish-haskell",
+                maxCompletions = 10,
+                plugin = {
+                    hlintOn = {
+                        globalOn = true
+                    },
+                },
+            }
+        }
+    },
+    lua_ls = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { 'vim' },
                 },
             },
         },
     },
-    arduino_language_server = {},
-    tsserver = {},
 }
 
 local function lsp_attach(on_attach)

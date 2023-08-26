@@ -47,9 +47,9 @@ cursor:
 live_config_reload: true
 # ~/.alacritty.yml
 
-shell:
-  program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "startTmux"
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "startTmux"
