@@ -55,3 +55,5 @@ fpath+=~/.zfunc
 eval "$(zoxide init zsh --cmd j)"
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
