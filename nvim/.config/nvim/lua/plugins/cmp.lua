@@ -3,6 +3,22 @@ return {
         'hrsh7th/nvim-cmp',
         -- event = "InsertEnter",
         ft = { 'python', 'bash' },
+        keys = {
+            {
+                "<leader>to",
+                function()
+                    require('cmp').setup.buffer { enabled = false }
+                end,
+                desc = "Turn off cmp"
+            },
+            {
+                "<leader>ta",
+                function()
+                    require('cmp').setup.buffer { enabled = true }
+                end,
+                desc = "Turn on cmp"
+            },
+        },
         dependencies = {
             { 'neovim/nvim-lspconfig' },
 
@@ -105,6 +121,7 @@ return {
         config = function()
             vim.g.copilot_filetypes = {
                 markdown = false,
+                rust = false,
             }
         end,
     }

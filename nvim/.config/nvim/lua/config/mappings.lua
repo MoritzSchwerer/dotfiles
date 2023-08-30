@@ -45,7 +45,5 @@ keymap("n", "<leader>zu",
     "<cmd>silent execute '!(cd $ZETTELKASTEN_ROOT && committer -s &) > /dev/null' | lua require('notify')('Syncing Changes...')<cr>",
     opts)
 
-
-
 -- Call insert link automatically when we start typing a link
 -- keymap("i", '[[', "<cmd>Telekasten insert_link<CR>", opts)
