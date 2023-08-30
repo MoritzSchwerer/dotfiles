@@ -20,6 +20,12 @@ return {
             highlight = {
                 enable = true,
             },
+            indet = {
+                enable = true,
+            },
+            rainbow = {
+                enable = true
+            }
         },
         requires = { 'nvim-treesitter/nvim-treesitter-context' },
         event = "BufReadPre",
