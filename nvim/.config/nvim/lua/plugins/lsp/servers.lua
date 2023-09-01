@@ -10,7 +10,16 @@ local servers = {
             },
         },
     },
-
+    rust_analyzer = {
+        settings = {
+            diagnostics = {
+                enable = true,
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
+    },
 }
 
 local function lsp_attach(on_attach)
