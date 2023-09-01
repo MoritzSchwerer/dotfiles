@@ -1,59 +1,27 @@
-export ZSH="$HOME/.oh-my-zsh"
+#!/bin/sh
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-ZSH_THEME="robbyrussell"
+# history
+HISTFILE=~/.zsh_history
 
-plugins=(
-    gitfast 
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-history-substring-search
-)
+# source
+plug "$HOME/.config/zsh/aliases.zsh"
+plug "$HOME/.config/zsh/exports.zsh"
 
-ALIASES=~/.zsh_aliases
-EXPORTS=~/.zsh_exports
-UTILS=~/.zsh_utils
+# my custom prompt
+plug "MoritzSchwerer/zap-prompt"
 
-if [ -f "$ALIASES" ]; then
-    source $ALIASES
-fi
-
-if [ -f "$EXPORTS" ]; then
-    source $EXPORTS
-fi
-
-if [ -f "$UTILS" ]; then
-    source $UTILS
-fi
-
-source $ZSH/oh-my-zsh.sh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/moritz/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/moritz/.miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/moritz/.miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/moritz/.miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# plugins
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/vim"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/fzf"
+plug "zap-zsh/vim"
+plug "zap-zsh/exa"
 
 
-# binding for history-substring-search
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+# keybinds
+bindkey '^ ' autosuggest-accept
 
-
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
-
-eval "$(zoxide init zsh --cmd j)"
-
-eval "$(atuin init zsh --disable-up-arrow)"
-
-[ -f "/home/moritz/.ghcup/env" ] && source "/home/moritz/.ghcup/env" # ghcup-env
+export PATH="$HOME/.local/bin":$PATH
