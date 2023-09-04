@@ -15,19 +15,39 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        opts = {
-            ensure_installed = { 'rust', 'python', 'lua', 'bash' },
-            highlight = {
-                enable = true,
-            },
-            indet = {
-                enable = true,
-            },
-            rainbow = {
-                enable = true
-            }
+        version = false,
+        build = ":TSUpdate",
+        event = "BufReadPost",
+        dependencies = {
+            "tree-sitter/tree-sitter-html"
         },
-        requires = { 'nvim-treesitter/nvim-treesitter-context' },
-        event = "BufReadPre",
+        opts = {
+            highlight = { enable = true },
+            indent = { enable = true },
+            rainbow = { enable = true },
+            ensure_installed = {
+                "python",
+                "javascript",
+                "markdown",
+                "bash",
+                "lua",
+                "haskell",
+                "rust",
+
+            },
+        },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end,
+    },
+    {
+        'p00f/nvim-ts-rainbow',
+        event = "BufReadPost",
+        dependencies = { 'nvim-treesitter' },
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        event = "BufReadPost",
+        dependencies = { 'nvim-treesitter' },
     },
 }
