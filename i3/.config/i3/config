@@ -9,8 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id ~/.local/bin/i3startup.sh
-
 set $mod Mod1 
 set $alt Mod4
 
@@ -23,7 +21,6 @@ for_window [class="^.*"] border pixel 2
 # zoom stuff
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
-for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
 
 gaps inner 10
 
@@ -36,11 +33,7 @@ client.urgent           #C678DD #C678DD #FFFFFF #98C379   #C678DD
 client.placeholder      #1E222A #1E222A #FFFFFF #98C379   #1E222A
 client.background       #1E222A
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
