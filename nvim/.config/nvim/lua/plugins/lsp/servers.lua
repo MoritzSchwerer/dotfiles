@@ -1,7 +1,27 @@
 local M = {}
 
 local servers = {
-    pyright = {},
+    pyright = {
+        capabilities = (function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+            return require("cmp_nvim_lsp").default_capabilities(capabilities)
+        end)(),
+        settings = {
+            python = {
+                analysis = {
+                    useLibraryCodeForTypes = true,
+                    autoSearchPaths = true,
+                    diagnosticSeverityOverrides = {
+                        reportUnusedVariable = "warning",
+                    },
+                    diagnosticsMode = "workspace",
+                    typeCheckingMode = "off",
+                },
+            },
+        },
+        single_file_support = true,
+    },
     lua_ls = {
         settings = {
             Lua = {
@@ -50,7 +70,9 @@ function M.setup()
     require("mason-lspconfig").setup_handlers {
         function(server)
             local opts = servers[server] or {}
-            opts.capabilities = lsp_capabilities()
+            if opts.capabilities == nil then
+                opts.capabilities = lsp_capabilities()
+            end
             require("lspconfig")[server].setup(opts)
         end,
     }

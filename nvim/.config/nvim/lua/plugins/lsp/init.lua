@@ -21,7 +21,8 @@ return {
         "williamboman/mason.nvim",
         cmd = "Mason",
         ensure_installed = {
-            -- "blue",
+            "blue",
+            "mypy",
         },
         config = function(plugin)
             require("mason").setup(
@@ -52,4 +53,14 @@ return {
             }
         end,
     },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = true,
+        cmd = "Trouble",
+        keys = {
+            { '<leader>wt', "<cmd>Trouble workspace_diagnostics<cr>", desc = "Trouble toggle workspace diagnostics" },
+            { '<leader>dt', "<cmd>Trouble document_diagnostics<cr>",  desc = "Trouble toggle document diagnostics" },
+        }
+    }
 }

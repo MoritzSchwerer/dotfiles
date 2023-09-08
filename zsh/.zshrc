@@ -23,4 +23,3 @@ plug "zap-zsh/exa"
 
 # keybinds
 bindkey '^ ' autosuggest-accept
-

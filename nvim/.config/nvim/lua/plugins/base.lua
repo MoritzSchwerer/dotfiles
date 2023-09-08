@@ -4,7 +4,7 @@ return {
         opts = {
             code_style = {
                 comments = 'italic',
-                keywords = 'italic',
+                keywords = 'none',
                 functions = 'none',
                 strings = 'none',
                 variables = 'none'
