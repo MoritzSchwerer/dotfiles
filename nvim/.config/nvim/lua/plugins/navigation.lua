@@ -35,7 +35,6 @@ return {
     },
     {
         'ThePrimeagen/harpoon',
-        event = 'VeryLazy',
         config = true,
         dependencies = {
             "nvim-lua/plenary.nvim"

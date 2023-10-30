@@ -1,0 +1,11 @@
+if command -v thorium-browser &> /dev/null; then
+    thorium-browser;
+    exit 0;
+fi
+
+if command -v brave-browser &> /dev/null; then
+    brave-browser;
+    exit 0;
+fi
+
+exit 1;

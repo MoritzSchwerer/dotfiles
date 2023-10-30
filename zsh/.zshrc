@@ -18,7 +18,7 @@ plug "zap-zsh/vim"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/fzf"
 plug "zap-zsh/vim"
-plug "zap-zsh/exa"
+# plug "zap-zsh/exa"
 
 
 # keybinds

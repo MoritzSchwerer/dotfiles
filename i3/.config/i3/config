@@ -22,7 +22,7 @@ for_window [class="^.*"] border pixel 2
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
 
-gaps inner 10
+# gaps inner 10
 
 # COLORS:
 # class                 border  backgr. text    indicator child_border
@@ -46,7 +46,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # start a terminal
 bindsym $mod+Return exec "alacritty -e startTmux"
 bindsym $mod+space exec "alacritty"
-bindsym $mod+Shift+Return exec brave-browser --no-startup-id
+bindsym $mod+Shift+Return exec startBrowser --no-startup-id
 
 # rofi pass
 bindsym $mod+p exec ~/.config/rofi/bin/rofi-pass
