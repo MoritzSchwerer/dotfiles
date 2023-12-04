@@ -4,12 +4,6 @@ alias python='python3'
 alias n='nvim'
 alias e='nvim'
 
-# todo
-alias todo='nvim +"Telekasten goto_today"'
-
-# arduino
-alias ac='arduino-cli'
-
 # general
 alias hn='hostname'
 
@@ -31,5 +25,8 @@ alias t="tmux"
 alias ta="tmux attach -t"
 alias tn="tmux new -s"
 
-# habitctl
-alias h="habitctl"
+# system commands
+alias poweroff='systemctl poweroff'
+alias reboot='systemctl reboot'
+alias suspend='systemctl suspend'
+
