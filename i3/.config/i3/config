@@ -46,7 +46,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # start a terminal
 bindsym $mod+Return exec "alacritty -e startTmux"
 bindsym $mod+space exec "alacritty"
+
+# browser
 bindsym $mod+Shift+Return exec startBrowser --no-startup-id
+
+# screenshot
+bindsym $mod+Shift+s exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +'%d-%m-%Y_%H-%M-%S').png"
+
 
 # rofi pass
 bindsym $mod+p exec ~/.config/rofi/bin/rofi-pass
