@@ -3,9 +3,6 @@ return {
         'neovim/nvim-lspconfig',
         event = "BufReadPre",
         dependencies = {
-            -- { "smjonas/inc-rename.nvim", config = true },
-            --
-            -- Language servers
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
 
@@ -21,7 +18,7 @@ return {
         "williamboman/mason.nvim",
         cmd = "Mason",
         ensure_installed = {
-            "blue",
+            "ruff",
             "mypy",
         },
         config = function(plugin)
@@ -47,8 +44,11 @@ return {
             local nls = require "null-ls"
             nls.setup {
                 sources = {
-                    nls.builtins.formatting.blue,
+                    nls.builtins.formatting.ruff,
                     nls.builtins.diagnostics.mypy,
+                    nls.builtins.diagnostics.ruff.with({
+                        method = nls.methods.DIAGNOSTICS_ON_SAVE,
+                    }),
                 },
             }
         end,

@@ -12,10 +12,10 @@ function M.on_attach(client, bufnr)
     -- diagnostics
     self:map("[d", M.diagnostic_goto(true), { desc = "Next Diagnostic" })
     self:map("]d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" })
-    self:map("]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-    self:map("[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-    self:map("]w", M.diagnostic_goto(true, "WARNING"), { desc = "Next Warning" })
-    self:map("[w", M.diagnostic_goto(false, "WARNING"), { desc = "Prev Warning" })
+    self:map("[e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+    self:map("]e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+    self:map("[w", M.diagnostic_goto(true, "WARNING"), { desc = "Next Warning" })
+    self:map("]w", M.diagnostic_goto(false, "WARNING"), { desc = "Prev Warning" })
 
     -- something else
     self:map("K", vim.lsp.buf.hover, { desc = "Hover" })
