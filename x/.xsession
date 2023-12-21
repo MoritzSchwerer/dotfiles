@@ -31,7 +31,7 @@ nm-applet --indicator &
 
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="brave"
+export BROWSER="thorium-browser"
 export ZETTELKASTEN_ROOT=$HOME/.telekasten/
 
 # XDG Paths
