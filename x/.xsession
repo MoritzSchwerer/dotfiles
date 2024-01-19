@@ -3,25 +3,19 @@
 # display configuration
 NUM_DISPLAYS=$(xrandr | grep " connected" | awk '{ print$1 }' | wc -l)
 case $NUM_DISPLAYS in
-    3)
+    2)
         # docked at home
         xrandr --output eDP       --mode 1920x1080 --auto
         xrandr --output DVI-I-1-1 --mode 1920x1080 --right-of DVI-I-2-2 --primary --same-as eDP
-        xrandr --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
     *)
         # mobile anywherer
         xrandr --output eDP       --mode 1920x1080 --auto
         xrandr --output DVI-I-1-1 --off
-        xrandr --output DVI-I-2-2 --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
 esac
-
-# # kill compton and then start it when the process is done
-# killall picom
-# while pgrep -x y >/dev/null; do sleep 1; done
 
 # Compositor
 picom -b

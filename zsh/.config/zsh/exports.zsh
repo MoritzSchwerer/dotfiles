@@ -2,7 +2,6 @@ export PATH="$HOME/.miniconda3/bin":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export Path="$Home/.cargo/bin":$PATH
 
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/moritz/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
