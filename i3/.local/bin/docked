@@ -3,8 +3,6 @@
 # setup displays
 xrandr --output eDP       --mode 1920x1080 --auto
 xrandr --output DVI-I-1-1 --mode 1920x1080 --right-of DVI-I-2-2 --primary --same-as eDP
-xrandr --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1
-# xrandr --output DVI-I-2-2 --off
 
 # set wallpaper
 # feh --bg-fill ~/.config/wallpapers/docked/DeepWorkBackground.png

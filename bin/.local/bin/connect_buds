@@ -1,0 +1,3 @@
+#! /usr/bin/bash
+
+bluetoothctl connect CC:F8:26:A5:27:89
