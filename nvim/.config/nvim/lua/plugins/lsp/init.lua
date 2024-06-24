@@ -59,8 +59,8 @@ return {
         config = true,
         cmd = "Trouble",
         keys = {
-            { '<leader>wt', "<cmd>Trouble workspace_diagnostics<cr>", desc = "Trouble toggle workspace diagnostics" },
-            { '<leader>dt', "<cmd>Trouble document_diagnostics<cr>",  desc = "Trouble toggle document diagnostics" },
+            { '<leader>wt', "<cmd>Trouble diagnostics toggle<cr>",              desc = "Trouble toggle workspace diagnostics" },
+            { '<leader>dt', "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Trouble toggle document diagnostics" },
         }
     }
 }
