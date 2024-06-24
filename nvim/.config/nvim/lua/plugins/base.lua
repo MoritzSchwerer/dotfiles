@@ -26,6 +26,7 @@ return {
             indent = { enable = true },
             rainbow = { enable = true },
             ensure_installed = {
+                "cpp",
                 "python",
                 "javascript",
                 "markdown",
@@ -33,7 +34,6 @@ return {
                 "lua",
                 "haskell",
                 "rust",
-
             },
         },
         config = function(_, opts)

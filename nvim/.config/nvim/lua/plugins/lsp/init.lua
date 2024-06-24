@@ -42,6 +42,12 @@ return {
         dependencies = { "mason.nvim" },
         config = function()
             local nls = require "null-ls"
+            nls.builtins.diagnostics.mypy.with({
+                extra_args = function()
+                    local virtual = os.getenv("CONDA_PREFIX") or "/usr"
+                    return { "--python-executable", virtual .. "/bin/python3" }
+                end,
+            })
             nls.setup {
                 sources = {
                     nls.builtins.formatting.ruff,
@@ -59,8 +65,9 @@ return {
         config = true,
         cmd = "Trouble",
         keys = {
-            { '<leader>wt', "<cmd>Trouble diagnostics toggle<cr>",              desc = "Trouble toggle workspace diagnostics" },
-            { '<leader>dt', "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Trouble toggle document diagnostics" },
+            { '<leader>wt', "<cmd>Trouble diagnostics toggle focus=true<cr>",              desc = "Trouble toggle workspace diagnostics" },
+            { '<leader>dt', "<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>", desc = "Trouble toggle document diagnostics" },
+            { '<leader>td', "<cmd>TodoTrouble toggle focus=true<cr>",                      desc = "Trouble toggle document diagnostics" },
         }
     }
 }
