@@ -1,0 +1,26 @@
+import = ["/home/moritz/.config/alacritty/colors.toml", "/home/moritz/.config/alacritty/fonts.toml"]
+live_config_reload = true
+
+[cursor]
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 0.8
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 84
+lines = 24
+
+[window.padding]
+x = 10
+y = 10
