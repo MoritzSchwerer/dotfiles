@@ -9,7 +9,6 @@ return {
                 strings = 'none',
                 variables = 'none'
             },
-
         },
 
     },
