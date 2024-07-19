@@ -45,6 +45,7 @@ return {
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
             nls.setup {
                 sources = {
+                    -- nls.builtins.formatting.clang_format,
                     nls.builtins.formatting.ruff,
                     nls.builtins.diagnostics.mypy,
                     nls.builtins.diagnostics.ruff.with({
