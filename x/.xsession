@@ -6,7 +6,7 @@ case $NUM_DISPLAYS in
     2)
         # docked at home
         # xrandr --output DVI-I-1-1 --primary --mode 1920x1080
-        xrandr --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate left
+        xrandr --output DVI-I-1-1 --primary --mode 1920x1080 #  --pos 0x0 --rotate left
         xrandr --output eDP --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
