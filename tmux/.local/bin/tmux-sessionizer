@@ -5,7 +5,7 @@ if [[ $# -eq 1 ]]; then
 else
     RESULT=$((tmux list-sessions -F "#{session_name}: #{session_windows} window(s)\
         #{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}\
-        #{?session_attached, (attached),}"; find ~/dev/* ~/ ~/dev/youtube/* ~/Documents -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf --reverse)
+        #{?session_attached, (attached),}"; find ~/dev/* ~/ ~/Documents ~/uni/ -mindepth 0 -maxdepth 1 -type d -name "[!.]*") | fzf --reverse)
 fi
 
 if [[ -z $RESULT ]]; then
