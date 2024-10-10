@@ -5,15 +5,18 @@ NUM_DISPLAYS=$(xrandr | grep " connected" | awk '{ print$1 }' | wc -l)
 case $NUM_DISPLAYS in
     2)
         # docked at home
-        # xrandr --output DVI-I-1-1 --primary --mode 1920x1080
-        xrandr --output DVI-I-1-1 --primary --mode 1920x1080 #  --pos 0x0 --rotate left
+        DISPLAYS=$(xrandr | grep " connected" | awk '{ print $1 }')
+        OTHER_DISPLAY=$(echo "$DISPLAYS" | grep -v "eDP")
+
+        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080
         xrandr --output eDP --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
     *)
-        # mobile anywherer
+        # mobile anywhere
         xrandr --output eDP       --mode 1920x1080 --auto --primary
         xrandr --output DVI-I-1-1 --off
+        xrandr --output HDMI-A-0 --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
 esac

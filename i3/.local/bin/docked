@@ -1,11 +1,12 @@
 #!/bin/sh
 
 # setup displays
-# xrandr --output eDP       --mode 1920x1080 --auto
+# get the display that is not the eDP
+DISPLAYS=$(xrandr | grep " connected" | awk '{ print $1 }')
+OTHER_DISPLAY=$(echo "$DISPLAYS" | grep -v "eDP")
+xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080 --pos 0x0
+
 xrandr --output eDP --off
-# xrandr --output DVI-I-1-1 --mode 1920x1080 --right-of DVI-I-2-2 --primary --same-as eDP
-# xrandr --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate left
-xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 # --rotate left
 
 # set wallpaper
 # feh --bg-fill ~/.config/wallpapers/docked/DeepWorkBackground.png

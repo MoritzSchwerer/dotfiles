@@ -1,8 +1,22 @@
 #!/bin/sh
+#
+# Get the list of connected displays
+DISPLAYS=$(xrandr | grep " connected" | awk '{ print $1 }')
 
-# setup displays
-xrandr --output eDP       --mode 1920x1080 --pos 0x0
-xrandr --output DVI-I-1-1 --off
+# Identify the eDP display
+EDP_DISPLAY=$(echo "$DISPLAYS" | grep "eDP")
+OTHER_DISPLAY=$(echo "$DISPLAYS" | grep -v "eDP")
 
-# set wallpaper
-feh --bg-fill ~/.config/wallpapers/Meteor.svg
+# Check if eDP display is found
+if [ -n "$EDP_DISPLAY" ]; then
+    # set eDP as primary
+    xrandr --output eDP --primary --mode 1920x1080 --pos 0x0
+
+    # Turn off other display
+    xrandr --output "$OTHER_DISPLAY" --off
+
+    # set wallpaper
+    feh --bg-fill ~/.config/wallpapers/docked/default.png
+else
+    echo "ERROR: did not find eDP, what the hell?"
+fi
