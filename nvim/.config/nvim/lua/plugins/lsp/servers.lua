@@ -21,6 +21,7 @@ local servers = {
             },
         },
     },
+    clangd = {},
 }
 
 local function lsp_attach(on_attach)

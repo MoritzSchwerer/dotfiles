@@ -4,7 +4,8 @@
 # xrandr --output eDP       --mode 1920x1080 --auto
 xrandr --output eDP --off
 # xrandr --output DVI-I-1-1 --mode 1920x1080 --right-of DVI-I-2-2 --primary --same-as eDP
-xrandr --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate left
+# xrandr --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate left
+xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 # --rotate left
 
 # set wallpaper
 # feh --bg-fill ~/.config/wallpapers/docked/DeepWorkBackground.png
