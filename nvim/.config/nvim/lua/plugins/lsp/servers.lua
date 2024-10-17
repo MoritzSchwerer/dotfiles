@@ -1,6 +1,7 @@
 local M = {}
 
 local servers = {
+    -- java_language_server = {},
     jedi_language_server = {},
     lua_ls = {
         settings = {
