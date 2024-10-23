@@ -22,7 +22,14 @@ local servers = {
             },
         },
     },
-    clangd = {},
+    clangd = {
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+        },
+
+    },
 }
 
 local function lsp_attach(on_attach)

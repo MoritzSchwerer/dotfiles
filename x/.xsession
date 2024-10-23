@@ -1,14 +1,22 @@
 #! /bin/sh
 
+# set display rotation
+ROTATE_VERTICAL=true
+
 # display configuration
 NUM_DISPLAYS=$(xrandr | grep " connected" | awk '{ print$1 }' | wc -l)
 case $NUM_DISPLAYS in
     2)
         # docked at home
         DISPLAYS=$(xrandr | grep " connected" | awk '{ print $1 }')
-        OTHER_DISPLAY=$(echo "$DISPLAYS" | grep -v "eDP")
+        OTHER_DISPLAY=$(echo "$DISPLAYS" | grep -v "eDP" | head -1)
 
-        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080
+        if $ROTATE_VERTICAL; then
+            ROTATION_FLAG="--rotate left"
+        else
+            ROTATION_FLAG="--rotate normal"
+        fi
+        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080 $ROTATION_FLAG --pos 0x0
         xrandr --output eDP --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
