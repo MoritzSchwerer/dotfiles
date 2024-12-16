@@ -7,7 +7,6 @@ return {
         keys = {
             { "<leader>af", "<cmd>Telescope find_files hidden=True<cr>", desc = "Find Files" },
             { "<leader>ax", "<cmd>Telescope git_files<cr>",              desc = "Git Files" },
-            { "<leader>ag", "<cmd>Telescope live_grep<cr>",              desc = "Live Grep" },
             { "<leader>ab", "<cmd>Telescope buffers<cr>",                desc = "Find Buffer" },
             { "<leader>ak", "<cmd>Telescope keymaps<cr>",                desc = "Show Keymaps" },
         },
@@ -31,6 +30,8 @@ return {
                 }
             })
             telescope.load_extension('fzf')
+            local glob_grep = require("plugins.telescope.glob_grep").glob_grep
+            vim.keymap.set("n", "<leader>ag", glob_grep)
         end
     },
     {

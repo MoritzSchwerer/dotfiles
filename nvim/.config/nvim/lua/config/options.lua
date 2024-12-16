@@ -70,8 +70,18 @@ vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 4   -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4      -- insert 2 spaces for a tab
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp" },
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "c", "cpp" },
+--     callback = function()
+--         vim.bo.tabstop = 2
+--         vim.bo.shiftwidth = 2
+--         vim.bo.expandtab = true
+--         vim.bo.softtabstop = 2
+--     end,
+-- })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "/home/moritz/uni/cpp/**/*.cpp", "/home/moritz/uni/cpp/**/*.h" },
     callback = function()
         vim.bo.tabstop = 2
         vim.bo.shiftwidth = 2
