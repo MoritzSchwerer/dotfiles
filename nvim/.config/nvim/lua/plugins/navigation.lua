@@ -2,8 +2,9 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        tag = "0.1.2",
+        tag = "0.1.8",
         version = false,
+        event = "VeryLazy",
         keys = {
             { "<leader>af", "<cmd>Telescope find_files hidden=True<cr>", desc = "Find Files" },
             { "<leader>ax", "<cmd>Telescope git_files<cr>",              desc = "Git Files" },

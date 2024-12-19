@@ -1,7 +1,7 @@
 return {
     {
         'neovim/nvim-lspconfig',
-        event = "BufReadPre",
+        event = "BufReadPost",
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
@@ -38,7 +38,7 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
-        event = "BufReadPre",
+        event = "BufReadPost",
         dependencies = { "mason.nvim" },
         config = function()
             local nls = require "null-ls"

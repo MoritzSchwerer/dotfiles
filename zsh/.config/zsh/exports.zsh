@@ -1,6 +1,12 @@
-export PATH="$HOME/.miniconda3/bin":$PATH
-export PATH="$HOME/.local/bin":$PATH
-export Path="$Home/.cargo/bin":$PATH
+export PATH="$HOME/.miniconda3/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$Home/.cargo/bin:$PATH"
+
+# cuda toolkit
+if [[ "$(hostname)" == "workstation" ]]; then
+    export PATH="/usr/local/cuda-12.1/bin:$PATH"
+    export LD_LIBRARY_PATH="/usr/local/cuda-12.1/lib64:$LD_LIBRARY_PATH"
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

@@ -44,11 +44,11 @@ return {
         event = "BufReadPost",
         dependencies = { 'nvim-treesitter' },
     },
-    -- {
-    --     'nvim-treesitter/nvim-treesitter-context',
-    --     event = "BufReadPost",
-    --     dependencies = { 'nvim-treesitter' },
-    -- },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        event = "BufReadPost",
+        dependencies = { 'nvim-treesitter' },
+    },
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
