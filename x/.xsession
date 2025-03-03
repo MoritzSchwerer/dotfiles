@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # set display rotation
-ROTATE_VERTICAL=true
+ROTATE_VERTICAL=false
 
 # display configuration
 NUM_DISPLAYS=$(xrandr | grep " connected" | awk '{ print$1 }' | wc -l)

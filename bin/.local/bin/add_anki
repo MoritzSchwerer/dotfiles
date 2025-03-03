@@ -1,0 +1,54 @@
+#! /usr/bin/python3
+
+import json
+import urllib.request
+import sys
+
+def request(action, **params):
+    return {'action': action, 'params': params, 'version': 6}
+
+def invoke(action, **params):
+    requestJson = json.dumps(request(action, **params)).encode('utf-8')
+    response = json.load(urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8765', requestJson)))
+    if len(response) != 2:
+        raise Exception('response has an unexpected number of fields')
+    if 'error' not in response:
+        raise Exception('response is missing required error field')
+    if 'result' not in response:
+        raise Exception('response is missing required result field')
+    if response['error'] is not None:
+        print(params)
+        raise Exception(response['error'])
+    return response['result']
+
+def add_cards(deck_name, cards):
+    # Ensure the deck exists
+    invoke('createDeck', deck=deck_name)
+    
+    # Add each card
+    for card in cards:
+        note = {
+            "deckName": deck_name,
+            "modelName": "Basic",
+            "fields": {
+                "Front": card["question"],
+                "Back": card["answer"]
+            },
+            "tags": card.get("tags", [])
+        }
+        result = invoke('addNote', note=note)
+        print(f'Added card: {card["question"]}, result: {result}')
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <deck_name> <file_name>")
+        sys.exit(1)
+    
+    deck_name = sys.argv[1]
+    file_name = sys.argv[2]
+    
+    # Load cards from the JSON file
+    with open(file_name, "r") as f:
+        cards = json.load(f)
+    
+    add_cards(deck_name, cards)
