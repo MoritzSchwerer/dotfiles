@@ -27,7 +27,8 @@ local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
 -- @l will print out the value of the highlighted variable
 vim.api.nvim_create_augroup("LoggingMacro", { clear = true })
 local log_commands = {
-    python = "yoprint('" .. esc .. "pa: ', " .. esc .. "pa)" .. esc .. "",
+    -- python = "yoprint('" .. esc .. "pa: ', " .. esc .. "pa)" .. esc .. "",
+    python = "yoprint('pa: ', pa)",
     cpp = "yostd::cout << 'pa €kb:' << pa << std::endl;",
 }
 vim.api.nvim_create_autocmd("FileType", {
