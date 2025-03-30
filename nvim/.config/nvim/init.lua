@@ -19,27 +19,3 @@ require('lazy').setup('plugins', {
     defaults = { lazy = true }
 })
 require('config')
-
------------------------------------
--------------- Macros -------------
-local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
-
--- @l will print out the value of the highlighted variable
-vim.api.nvim_create_augroup("LoggingMacro", { clear = true })
-local log_commands = {
-    -- python = "yoprint('" .. esc .. "pa: ', " .. esc .. "pa)" .. esc .. "",
-    python = "yoprint('pa: ', pa)",
-    cpp = "yostd::cout << 'pa €kb:' << pa << std::endl;",
-}
-vim.api.nvim_create_autocmd("FileType", {
-    group = "LoggingMacro",
-    pattern = vim.tbl_keys(log_commands),
-
-
-    callback = function(args)
-        local command = log_commands[args.match]
-        if command then
-            vim.fn.setreg("l", command)
-        end
-    end
-})

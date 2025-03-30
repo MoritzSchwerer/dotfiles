@@ -24,3 +24,6 @@ keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
+
+-- utils
+keymap("v", "<leader>l", ":lua require('utils').insert_print_for_visual_selection()<cr>", opts)
