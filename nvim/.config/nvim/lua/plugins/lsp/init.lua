@@ -19,7 +19,7 @@ return {
         cmd = "Mason",
         ensure_installed = {
             "ruff",
-            "mypy",
+            -- "mypy",
         },
         config = function(plugin)
             require("mason").setup(
@@ -47,16 +47,16 @@ return {
                 sources = {
                     -- nls.builtins.formatting.clang_format,
                     nls.builtins.formatting.ruff,
-                    nls.builtins.diagnostics.mypy,
+                    -- nls.builtins.diagnostics.mypy,
                     nls.builtins.diagnostics.ruff.with({
                         method = nls.methods.DIAGNOSTICS_ON_SAVE,
                     }),
-                    nls.builtins.diagnostics.mypy.with({
-                        extra_args = function()
-                            local virtual = os.getenv("CONDA_PREFIX") or "/usr"
-                            return { "--python-executable", virtual .. "/bin/python" }
-                        end,
-                    }),
+                    -- nls.builtins.diagnostics.mypy.with({
+                    --     extra_args = function()
+                    --         local virtual = os.getenv("CONDA_PREFIX") or "/usr"
+                    --         return { "--python-executable", virtual .. "/bin/python" }
+                    --     end,
+                    -- }),
                 },
                 on_attach = function(client, bufnr)
                     if client.supports_method("textDocument/formatting") then

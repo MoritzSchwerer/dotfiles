@@ -22,8 +22,8 @@ for_window [class="^.*"] border pixel 2
 for_window [window_role="About"] floating enable
 
 # zoom stuff
-for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
-for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
+# for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
+# for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
 
 # float zotero stuff
 for_window [class="Zotero" title="Quick Format Citation"] floating enable
