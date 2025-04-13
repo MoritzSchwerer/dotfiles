@@ -1,6 +1,13 @@
 local M = {}
 
 local servers = {
+    basedpyright = {
+        settings = {
+            basedpyright = {
+                typeCheckingMode = "standard",
+            }
+        }
+    },
     lua_ls = {
         settings = {
             Lua = {
