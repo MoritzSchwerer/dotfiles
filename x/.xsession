@@ -16,7 +16,7 @@ case $NUM_DISPLAYS in
         else
             ROTATION_FLAG="--rotate normal"
         fi
-        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080 $ROTATION_FLAG --pos 0x0
+        xrandr --output "$OTHER_DISPLAY" --primary --mode 2560x1440 --rate 144 $ROTATION_FLAG --pos 0x0
         xrandr --output eDP --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
