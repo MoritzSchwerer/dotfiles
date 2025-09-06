@@ -16,7 +16,7 @@ case $NUM_DISPLAYS in
         else
             ROTATION_FLAG="--rotate normal"
         fi
-        xrandr --output "$OTHER_DISPLAY" --primary --mode 2560x1440 --rate 144 $ROTATION_FLAG --pos 0x0
+        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080 --rate 60 $ROTATION_FLAG --pos 0x0
         xrandr --output eDP --off
         feh --bg-fill ~/.config/wallpapers/docked/default.png
         ;;
@@ -44,6 +44,7 @@ export ZETTELKASTEN_ROOT=$HOME/.telekasten/
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+
 
 
 exec i3
