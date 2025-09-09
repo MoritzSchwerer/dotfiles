@@ -13,6 +13,8 @@ keymap('n', '<leader>af', "<cmd>Telescope find_files<cr>", opts)
 keymap('n', '<leader>ag', "<cmd>Telescope live_grep<cr>", opts)
 keymap('n', '<leader>ab', "<cmd>Telescope buffers<cr>", opts)
 keymap('n', '<leader>ah', "<cmd>Telescope help_tags<cr>", opts)
+-- keymap('n', '<leader>ac', SearchClasses, opts)
+-- keymap('n', '<leader>am', SearchFunctions, opts)
 
 -- usefull stuff
 keymap('n', "<leader>p", "\"_dp", opts)

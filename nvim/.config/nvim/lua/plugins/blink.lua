@@ -7,16 +7,6 @@ return {
         keys = {},
         lazy = false,
         opts = {
-            indent = {
-                enabled = true,
-                static = { enabled = false },
-                scope = {
-                    enabled = true,
-                    char = '|',
-                    priority = 1024,
-                    highlights = { 'BlinkIndent' },
-                },
-            },
             tree = { enabled = false },
         }
     },
@@ -33,6 +23,21 @@ return {
             },
             signature = { enabled = true },
             fuzzy = { implementation = "prefer_rust_with_warning" }
+        },
+    },
+    {
+        'saghen/blink.indent',
+        event = "BufReadPost",
+        opts = {
+            enabled = true,
+            static = { enabled = false },
+            scope = {
+                enabled = true,
+                char = '|',
+                -- char = '▎',
+                priority = 1024,
+                highlights = { 'BlinkIndent' },
+            },
         },
     }
 }

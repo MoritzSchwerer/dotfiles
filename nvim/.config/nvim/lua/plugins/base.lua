@@ -45,4 +45,9 @@ return {
         opts = {},
         event = "BufReadPost"
     },
+    {
+        'lewis6991/gitsigns.nvim',
+        event = "BufReadPost",
+        config = true,
+    }
 }

@@ -33,8 +33,18 @@ local servers = {
             "--background-index",
             "--clang-tidy",
         },
-
     },
+    texlab = {
+        build = {
+            executable = "latexmk",
+            args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "-file-line-error" },
+            onSave = true,
+        },
+        forwardSearch = {
+            executable = "zathura",
+            args = { "--synctex-forward", "%l:1:%f", "%p" },
+        },
+    }
 }
 
 local function lsp_attach(on_attach)
@@ -61,15 +71,13 @@ function M.setup()
     require("mason-lspconfig").setup {
         ensure_installed = vim.tbl_keys(servers),
     }
-    require("mason-lspconfig").setup_handlers {
-        function(server)
-            local opts = servers[server] or {}
-            if opts.capabilities == nil then
-                opts.capabilities = lsp_capabilities()
-            end
-            require("lspconfig")[server].setup(opts)
-        end,
-    }
+    local lspconfig = require("lspconfig")
+
+    for server, opts in pairs(servers) do
+        opts.capabilities = opts.capabilities or lsp_capabilities()
+        lspconfig[server].setup(opts)
+    end
+
 end
 
 return M

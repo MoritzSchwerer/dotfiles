@@ -33,6 +33,24 @@ function M.on_attach(client, bufnr)
     self:map("<leader>ds", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
     self:map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Workspace Symbols" })
 
+    local builtin = require('telescope.builtin')
+    function SearchClasses()
+        builtin.lsp_dynamic_workspace_symbols({
+            symbols = { "Class" },
+            prompt_title = "Search Classes"
+        })
+    end
+
+    function SearchFunctions()
+        builtin.lsp_dynamic_workspace_symbols({
+            symbols = { "Function", "Method" },
+            prompt_title = "Search Functions"
+        })
+    end
+    self:map("<leader>ac", SearchClasses, { desc = "Search Classes in Workspace" })
+    self:map("<leader>am", SearchFunctions, { desc = "Search Functions in Workspace" })
+
+
     -- old
 end
 
