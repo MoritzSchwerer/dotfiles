@@ -9,7 +9,7 @@ CATEGORIES=(
 )
 selected=$(printf "%s\n" "${CATEGORIES[@]}" | sk --margin 30% --color="bw" --margin=25%,25%,25%,35%)
 
-if [[ "$selected" == "STOP" ]]; then
+if [[ "$selected" == "DONE" ]]; then
     timew stop
 		tmux set -g status-right ""
 else
