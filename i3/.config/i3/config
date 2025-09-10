@@ -59,6 +59,8 @@ bindsym $mod+Shift+Return exec startBrowser --no-startup-id
 # screenshot
 bindsym $mod+Shift+s exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +'%d-%m-%Y_%H-%M-%S').png"
 
+# rofi calculator
+bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | sed 's/^approx\. //' | xclip -sel clip"
 
 # rofi pass
 bindsym $mod+p exec ~/.config/rofi/bin/rofi-pass
