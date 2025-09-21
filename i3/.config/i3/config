@@ -74,6 +74,8 @@ bindsym $alt+l exec i3lock.sh
 # start rofi launcher (a program launcher)
 bindsym $mod+d exec ~/.config/rofi/bin/launcher
 
+bindsym $mod+t exec ~/.local/bin/reconnect_buds
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
