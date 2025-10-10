@@ -1,10 +1,13 @@
 local M = {}
 
 local servers = {
+    ruff = {
+        settings = {}
+    },
     basedpyright = {
         settings = {
             basedpyright = {
-                typeCheckingMode = "standard",
+                typeCheckingMode = "off",
             }
         }
     },
@@ -69,6 +72,7 @@ function M.setup()
     end)
 
     require("mason-lspconfig").setup {
+        automatic_enable=false,
         ensure_installed = vim.tbl_keys(servers),
     }
     local lspconfig = require("lspconfig")
