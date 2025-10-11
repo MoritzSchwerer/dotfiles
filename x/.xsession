@@ -30,7 +30,7 @@ case $NUM_DISPLAYS in
 esac
 
 # Compositor
-picom -b
+picom -b --no-fading-openclose
 
 # Network Manager Applet
 nm-applet --indicator &
@@ -39,7 +39,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="thorium-browser"
 export ZETTELKASTEN_ROOT=$HOME/.telekasten/
-
+export PATH="$HOME/.local/bin:$PATH"
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache

@@ -72,16 +72,18 @@ function M.setup()
     end)
 
     require("mason-lspconfig").setup {
-        automatic_enable=false,
+        automatic_enable = false,
         ensure_installed = vim.tbl_keys(servers),
     }
-    local lspconfig = require("lspconfig")
 
-    for server, opts in pairs(servers) do
+    local configured = {}
+    for name, opts in pairs(servers) do
+        opts = opts or {}
         opts.capabilities = opts.capabilities or lsp_capabilities()
-        lspconfig[server].setup(opts)
+        vim.lsp.config(name, opts)
+        table.insert(configured, name)
     end
-
+    vim.lsp.enable(configured)
 end
 
 return M

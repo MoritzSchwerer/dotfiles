@@ -6,7 +6,7 @@ basecommand="$0"
 
 # set default settings
 _rofi () {
-	rofi -no-auto-select -i "$@"
+	rofi -dmenu -no-auto-select -i "$@"
 }
 
 _pwgen () {
@@ -839,10 +839,12 @@ main () {
 		layout_cmd
 	fi
 
+    # NOTE: this caused the rofi does not know what to show erro
 	# set help color
-	if [[ $help_color == "" ]]; then
-		help_color=$(rofi -dump-xresources | grep 'rofi.color.normal' | gawk -F ',' '/,/{gsub(/ /, "", $2); print $2}')
-	fi
+	# if [[ $help_color == "" ]]; then
+	# 	help_color=$(rofi -dump-xresources | grep 'rofi.color.normal' | gawk -F ',' '/,/{gsub(/ /, "", $2); print $2}')
+	# fi
+    help_color="${help_color:-#ffffff}"
 
 	# check for BROWSER variable, use xdg-open as fallback
 	if [[ -z $BROWSER ]]; then
