@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# --- Configuration ---
+IP="192.168.1.50"
+CO2_LIMIT=1200
+PM25_LIMIT=25
+VOC_LIMIT=1000
+
+# Cooldown in seconds (5 minutes)
+COOLDOWN=300
+LAST_ALERT=0
+
+# Loop forever
+while true; do
+    # Fetch data silently (-s), max time 5s (-m 5)
+    JSON=$(curl -s -m 5 "http://$IP/air-data/latest")
+
+    # Only proceed if we actually got JSON data
+    if [ ! -z "$JSON" ]; then
+        
+        # Use jq to check thresholds. returns "true" or "false"
+        CO2_HIGH=$(echo "$JSON" | jq ".co2 > $CO2_LIMIT")
+        PM25_HIGH=$(echo "$JSON" | jq ".pm25 > $PM25_LIMIT")
+        VOC_HIGH=$(echo "$JSON" | jq ".voc > $VOC_LIMIT")
+        
+        MSG=""
+
+        if [ "$CO2_HIGH" = "true" ]; then
+            VAL=$(echo "$JSON" | jq ".co2")
+            MSG="${MSG}CO2 High: ${VAL} ppm. "
+        fi
+
+        if [ "$PM25_HIGH" = "true" ]; then
+            VAL=$(echo "$JSON" | jq ".pm25")
+            MSG="${MSG}PM2.5 High: ${VAL}. "
+        fi
+
+        if [ "$VOC_HIGH" = "true" ]; then
+            VAL=$(echo "$JSON" | jq ".voc")
+            MSG="${MSG}VOC High: ${VAL}. "
+        fi
+
+        # If there is a message...
+        if [ ! -z "$MSG" ]; then
+            NOW=$(date +%s)
+            TIME_DIFF=$((NOW - LAST_ALERT))
+
+            # ...and cooldown has passed
+            if [ "$TIME_DIFF" -gt "$COOLDOWN" ]; then
+                notify-send -u critical -a "Awair Monitor" "Air Quality Alert" "$MSG"
+                LAST_ALERT=$NOW
+            fi
+        fi
+    fi
+
+    # Sleep for 60 seconds
+    sleep 60
+done

@@ -37,7 +37,7 @@ nm-applet --indicator &
 
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="thorium-browser"
+export BROWSER="zen"
 export ZETTELKASTEN_ROOT=$HOME/.telekasten/
 export PATH="$HOME/.local/bin:$PATH"
 # XDG Paths
@@ -47,5 +47,5 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 
 
-exec i3
+exec i3 && startup
 

@@ -1,12 +1,13 @@
 #! /usr/bin/env bash
 
-if command -v zen-browser &> /dev/null; then
-    zen-browser;
-    exit 0;
-fi
 
 if command -v thorium-browser &> /dev/null; then
     thorium-browser;
+    exit 0;
+fi
+
+if command -v zen &> /dev/null; then
+    zen;
     exit 0;
 fi
 

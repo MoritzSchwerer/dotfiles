@@ -19,11 +19,11 @@ plug "zap-zsh/vim"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/fzf"
 plug "zap-zsh/vim"
-plug "zap-zsh/exa"
+# plug "zap-zsh/exa"
 
 
 # this is a fix from https://github.com/zap-zsh/exa/issues/10 for ls auto completion
-alias ls='eza --icons --group-directories-first'
+# alias ls='eza --icons --group-directories-first'
 
 # keybinds
 bindkey '^ ' autosuggest-accept

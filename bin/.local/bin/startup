@@ -1,10 +1,11 @@
 #!/usr/bin/bash
 ACTIVE_WS="$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2)"
-echo $ACTIVE_WS
-i3-msg "workspace 1; exec startTmux"
-i3-msg "workspace 2; exec thorium_browser"
+# echo $ACTIVE_WS
+i3-msg "workspace 1; exec 'exec 'sleep 2 && alacritty -e zsh -lc /home/moritz/.local/bin/startTmux'"
+i3-msg "workspace 2; exec /home/moritz/.local/bin/startBrowser && sleep 1.00"
 i3-msg "workspace 3; exec alacritty"
-i3-msg "workspace 4; exec [ $(ps h -C obsidian | wc -l) = 0] && obsidian && sleep 0.5"
-i3-msg "workspace 5; exec zotero"
-i3-msg "workspace 6; exec alacritty"
-i3-msg "workspace ${ACTIVE_WS}";
+i3-msg "workspace 4; exec obsidian && sleep 5.0"
+i3-msg "workspace 5; exec zotero "
+i3-msg "workspace 6; exec /opt/cisco/secureclient/bin/vpnui"
+i3-msg "workspace 4"
+# i3-msg "workspace ${ACTIVE_WS}";
