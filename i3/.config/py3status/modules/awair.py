@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Display air quality data from an Awair Element.
 
@@ -31,7 +30,7 @@ class Py3status:
     # Configuration defaults
     ip = "127.0.0.1"
     format = "Awair: {temp}°C {humid}% CO2:{co2}"
-    timeout = 5
+    timeout = 2
     cache_timeout = 60
 
     def awair(self):
@@ -44,18 +43,23 @@ class Py3status:
                 # Awair returns: {"timestamp":..., "score":..., "temp":..., "humid":..., "co2":..., "voc":..., "pm25":...}
                 data = response.json()
             else:
-                return {
-                    "full_text": "Awair: Error {}".format(response.status_code),
-                    "color": self.py3.COLOR_BAD,
-                }
+                return None
+                # return {
+                #     "full_text": "Awair: Error {}".format(response.status_code),
+                #     "color": self.py3.COLOR_BAD,
+                # }
         except Exception:
-            return {"full_text": "Awair: Down", "color": self.py3.COLOR_BAD}
+            return None
+            # return {"full_text": "Awair: Down", "color": self.py3.COLOR_BAD}
 
         # Apply thresholds to the data based on configuration
         # This allows you to color the output based on CO2 levels, etc.
         color = self.py3.threshold_get_color(data["co2"], "co2")
         # self.py3.threshold_get_color(data["temp"], "temp")
         # self.py3.threshold_get_color(data["humid"], "humid")
+
+        data["temp"] = int(data["temp"] + 0.5)
+        # data["co2"] = (data["co2"] + 5) // 10 * 10
 
         # Format the output using the data dictionary
         full_text = self.py3.safe_format(self.format, data)

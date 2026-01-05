@@ -16,16 +16,22 @@ case $NUM_DISPLAYS in
         else
             ROTATION_FLAG="--rotate normal"
         fi
-        xrandr --output "$OTHER_DISPLAY" --primary --mode 1920x1080 --rate 60 $ROTATION_FLAG --pos 0x0
+        xrandr --output "$OTHER_DISPLAY" --primary --mode 3840x2160 --rate 60 $ROTATION_FLAG --pos 0x0
         xrandr --output eDP --off
-        feh --bg-fill ~/.config/wallpapers/docked/default.png
+        convert -size 1x1 xc:black /tmp/black_pixel.png
+        # feh --bg-fill ~/.config/wallpapers/docked/default.png
+        feh --bg-scale /tmp/black_pixel.png
+        export GDK_SCALE=1.5
+        export GDK_DPI_SCALE=0.75
         ;;
     *)
         # mobile anywhere
         xrandr --output eDP       --mode 1920x1080 --auto --primary
         xrandr --output DVI-I-1-1 --off
         xrandr --output HDMI-A-0 --off
-        feh --bg-fill ~/.config/wallpapers/docked/default.png
+        convert -size 1x1 xc:black /tmp/black_pixel.png
+        # feh --bg-fill ~/.config/wallpapers/docked/default.png
+        feh --bg-scale /tmp/black_pixel.png
         ;;
 esac
 
@@ -33,11 +39,11 @@ esac
 picom -b --no-fading-openclose
 
 # Network Manager Applet
-nm-applet --indicator &
+# nm-applet --indicator &
 
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="zen"
+export BROWSER="thorium-browser"
 export ZETTELKASTEN_ROOT=$HOME/.telekasten/
 export PATH="$HOME/.local/bin:$PATH"
 # XDG Paths

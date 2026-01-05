@@ -1,0 +1,161 @@
+#! /usr/bin/env python
+import random
+import datetime
+
+# Configuration
+YEAR_START = 1753
+YEAR_END = 2099
+MONTH_CODES = [0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5]  # 033 614 625 035
+CENTURY_CODES = {17: 4, 18: 2, 19: 0, 20: 6, 21: 4}
+DAY_NAMES = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+]
+
+
+def is_leap(year):
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+
+def generate_trace(year, month, day):
+    """
+    Calculates the day using the user's preferred order:
+    Date -> Month -> Century -> Year -> Leap Mod
+    """
+
+    trace_lines = []
+    trace_lines.append(f"\n--- MENTAL TRACE FOR {day}/{month}/{year} ---")
+
+    # Initialize Running Total
+    running_total = 0
+
+    # 1. DATE NUMBER
+    # We take the day and immediately mod 7
+    day_mod = day % 7
+    running_total = (running_total + day_mod) % 7
+    trace_lines.append(f"1. DATE ({day}):")
+    trace_lines.append(f"   {day} mod 7 = {day_mod}")
+    trace_lines.append(f"   [Running Total: {running_total}]")
+
+    # 2. MONTH CODE
+    month_code = MONTH_CODES[month - 1]
+    prev_total = running_total
+    running_total = (running_total + month_code) % 7
+    month_name = datetime.date(year, month, day).strftime("%B")
+    trace_lines.append(f"\n2. MONTH CODE ({month_name}):")
+    trace_lines.append(f"   Code: {month_code}")
+    trace_lines.append(
+        f"   {prev_total} (current) + {month_code} = {prev_total + month_code}"
+    )
+    trace_lines.append(f"   {prev_total + month_code} mod 7 = {running_total}")
+    trace_lines.append(f"   [Running Total: {running_total}]")
+
+    # 3. CENTURY CODE
+    century = year // 100
+    century_code = CENTURY_CODES.get(century, 0)
+    prev_total = running_total
+    running_total = (running_total + century_code) % 7
+    trace_lines.append(f"\n3. CENTURY CODE ({century}00s):")
+    trace_lines.append(f"   Code: {century_code}")
+    trace_lines.append(
+        f"   {prev_total} (current) + {century_code} = {prev_total + century_code}"
+    )
+    trace_lines.append(f"   {prev_total + century_code} mod 7 = {running_total}")
+    trace_lines.append(f"   [Running Total: {running_total}]")
+
+    # 4. YEAR CODE
+    # Calculate year term separately first, then add to pile
+    yy = year % 100
+    yy_div_4 = yy // 4
+    raw_year_sum = yy + yy_div_4
+    year_code_mod = raw_year_sum % 7
+
+    prev_total = running_total
+    running_total = (running_total + year_code_mod) % 7
+
+    trace_lines.append(f"\n4. YEAR CODE (YY={yy}):")
+    trace_lines.append(f"   {yy} + ({yy} div 4) = {yy} + {yy_div_4} = {raw_year_sum}")
+    trace_lines.append(f"   {raw_year_sum} mod 7 = {year_code_mod}")
+    trace_lines.append(
+        f"   Add to pile: {prev_total} + {year_code_mod} = {prev_total + year_code_mod}"
+    )
+    trace_lines.append(f"   {prev_total + year_code_mod} mod 7 = {running_total}")
+    trace_lines.append(f"   [Running Total: {running_total}]")
+
+    # 5. LEAP YEAR MODIFIER
+    is_leap_year = is_leap(year)
+    if is_leap_year and month <= 2:
+        prev_total = running_total
+        # Handle negative result for modulo arithmetic (e.g. 0 - 1 = -1 -> 6)
+        running_total = (running_total - 1) % 7
+        trace_lines.append(f"\n5. LEAP YEAR MODIFIER:")
+        trace_lines.append(f"   Leap year & Jan/Feb. Subtract 1.")
+        trace_lines.append(f"   {prev_total} - 1 = {prev_total - 1}")
+        trace_lines.append(f"   {prev_total - 1} mod 7 = {running_total}")
+    else:
+        trace_lines.append(f"\n5. LEAP YEAR MODIFIER:")
+        trace_lines.append(f"   No modifier needed.")
+
+    # Final Result
+    trace_lines.append(f"\n--- FINAL RESULT ---")
+    trace_lines.append(
+        f"   Total: {running_total} -> {DAY_NAMES[running_total].upper()}"
+    )
+
+    return "\n".join(trace_lines), running_total
+
+
+def main():
+    print("📅 Mental Calendar Trainer (Optimized Order) 📅")
+    print("Order: Date -> Month -> Century -> Year")
+    print("Press Ctrl+C to exit.\n")
+
+    try:
+        while True:
+            # Generate random date
+            start_date = datetime.date(YEAR_START, 1, 1)
+            end_date = datetime.date(YEAR_END, 12, 31)
+            days_between = (end_date - start_date).days
+            random_days = random.randrange(days_between)
+            target_date = start_date + datetime.timedelta(days=random_days)
+
+            # Format display
+            date_str = (
+                f"{target_date.day} {target_date.strftime('%B')} {target_date.year}"
+            )
+            print("-" * 50)
+            print(f"Calculate:  👉  {date_str}")
+
+            input("Press Enter for trace...")
+
+            # Calculate and show trace
+            trace, result_idx = generate_trace(
+                target_date.year, target_date.month, target_date.day
+            )
+
+            print(trace)
+
+            # Verify
+            python_weekday = target_date.weekday()  # Mon=0, Sun=6
+            my_weekday = (result_idx - 1) % 7  # Shift 0=Sun to 6=Sun
+
+            if python_weekday == my_weekday:
+                print(f"\n✅ CORRECT: {DAY_NAMES[result_idx]}")
+            else:
+                print(
+                    f"\n❌ ERROR: Script says {DAY_NAMES[result_idx]}, Reality is {target_date.strftime('%A')}"
+                )
+
+            print("\n")
+
+    except KeyboardInterrupt:
+        print("\nTraining session ended.")
+
+
+if __name__ == "__main__":
+    main()
